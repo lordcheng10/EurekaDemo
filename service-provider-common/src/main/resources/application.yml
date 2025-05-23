@@ -10,10 +10,7 @@ eureka:
     service-url:
 #      defaultZone: http://localhost:8761/eureka/
       defaultZone: https://eureka.bitmartgcp-test.com/eureka/
-  instance:
-    prefer-ip-address: true
-    # 不添加区域信息，使其在没有特定区域匹配的情况下被选择
-    
+
 # 日志配置
 logging:
   level:
