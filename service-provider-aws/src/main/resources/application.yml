@@ -18,6 +18,9 @@ eureka:
     metadata-map:
       zone: aws
     zone: aws
+    # 更快的心跳检测
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
     
 # 日志配置
 logging:

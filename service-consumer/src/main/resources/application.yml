@@ -5,6 +5,18 @@ spring:
     loadbalancer:
       zone: aws
       configurations: zone-preference
+      cache:
+        # 禁用负载均衡器的缓存，确保每次请求都能获取最新的服务列表
+        ttl: 0
+        enabled: false
+      retry:
+        # 启用重试机制
+        enabled: true
+        # 相同实例的最大重试次数
+        max-retries-on-same-instance: 1
+        # 切换实例的最大重试次数
+        max-retries-on-next-instance: 2
+        retry-on-all-operations: true
       
 server:
   port: 8002
@@ -14,21 +26,43 @@ eureka:
     metadata-map:
       zone: aws
     prefer-ip-address: true
+    # 减少实例心跳间隔以更快检测故障
+    lease-renewal-interval-in-seconds: 5  # 默认为30秒
+    lease-expiration-duration-in-seconds: 10  # 默认为90秒
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
     prefer-same-zone-eureka: true
+    # 更频繁地从Eureka获取服务注册表更新
+    registry-fetch-interval-seconds: 3  # 默认为30秒
 
-# 简单的Feign配置
+# Feign配置
 feign:
   client:
     config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 3000
       service-provider:
-        connectTimeout: 5000
-        readTimeout: 5000
+        connectTimeout: 1000
+        readTimeout: 3000
+  # 启用Feign客户端的重试
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+  # 开启请求重试
+  okhttp.enabled: true
+  retry:
+    enabled: true
 
+# 日志配置
 logging:
   level:
     com.netflix.loadbalancer: DEBUG
     org.springframework.cloud.netflix.ribbon: DEBUG
-    org.springframework.cloud.netflix.eureka: DEBUG 
+    org.springframework.cloud.netflix.eureka: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+    org.springframework.cloud.client.discovery: DEBUG 
