@@ -10,15 +10,14 @@ server:
   port: 8002
         
 eureka:
-  instance:
-    metadata-map:
-      zone: aws
-    prefer-ip-address: true
   client:
     service-url:
 #      defaultZone: http://localhost:8761/eureka/
       defaultZone: https://eureka.bitmartgcp-test.com/eureka/
-    prefer-same-zone-eureka: true
+
+  instance:
+    metadata-map:
+      zone: aws
 
 # 简单的Feign配置
 feign:

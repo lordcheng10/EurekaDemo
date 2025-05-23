@@ -10,10 +10,6 @@ eureka:
     service-url:
 #      defaultZone: http://localhost:8761/eureka/
       defaultZone: https://eureka.bitmartgcp-test.com/eureka/
-    prefer-same-zone-eureka: true
-    region: region1
-    availability-zones:
-      region1: gcp,aws
   instance:
     prefer-ip-address: true
     metadata-map:
