@@ -1,27 +1,28 @@
 spring:
+  application:
+    name: service-consumer
   cloud:
     loadbalancer:
       zone: aws
       configurations: zone-preference
-      retry:
-        enabled: true
+      
+server:
+  port: 8002
         
 eureka:
   instance:
     metadata-map:
       zone: aws
-    zone: aws
+    prefer-ip-address: true
   client:
-    region: region1
-    availability-zones:
-      region1: aws
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
     prefer-same-zone-eureka: true
 
+# 简单的Feign配置
 feign:
   client:
     config:
-      default:
-        loggerLevel: FULL
       service-provider:
         connectTimeout: 5000
         readTimeout: 5000
