@@ -31,7 +31,8 @@ eureka:
     lease-expiration-duration-in-seconds: 10  # 默认为90秒
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://localhost:8761/eureka/
+      defaultZone: https://eureka.bitmartgcp-test.com/eureka/
     prefer-same-zone-eureka: true
     # 更频繁地从Eureka获取服务注册表更新
     registry-fetch-interval-seconds: 3  # 默认为30秒
