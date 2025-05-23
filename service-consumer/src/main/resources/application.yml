@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    loadbalancer:
+      zone: aws
+      configurations: zone-preference
+      retry:
+        enabled: true
+        
+eureka:
+  instance:
+    metadata-map:
+      zone: aws
+    zone: aws
+  client:
+    region: region1
+    availability-zones:
+      region1: aws
+    prefer-same-zone-eureka: true
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL
+      service-provider:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+logging:
+  level:
+    com.netflix.loadbalancer: DEBUG
+    org.springframework.cloud.netflix.ribbon: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG 

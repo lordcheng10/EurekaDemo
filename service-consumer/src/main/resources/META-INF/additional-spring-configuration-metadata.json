@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "spring.cloud.loadbalancer.zone",
+      "type": "java.lang.String",
+      "description": "The zone where this application is running."
+    },
+    {
+      "name": "spring.cloud.loadbalancer.configurations",
+      "type": "java.lang.String",
+      "description": "Comma-separated list of special loadbalancer configurations to be used."
+    }
+  ]
+} 
