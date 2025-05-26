@@ -20,8 +20,6 @@
 		<module>service-provider</module>
 		<module>service-consumer</module>
 		<module>service-provider-aws</module>
-		<module>service-consumer-gcp</module>
-		<module>service-consumer-aws</module>
 		<module>service-provider-common</module>
 	</modules>
 	
