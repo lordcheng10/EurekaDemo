@@ -1,24 +1,24 @@
 spring:
   application:
-    name: eureka-server
+    name: eureka-server-aws
 
 server:
-  port: 8761
+  port: 8762
 
 eureka:
   instance:
     metadata-map:
-      zone: gcp
-    zone: gcp
+      zone: aws
+    zone: aws
   client:
     register-with-eureka: true
     fetch-registry: true
     preferSameZoneEureka: true
     availabilityZones:
-      default: gcp,aws
+      default: aws,gcp
     serviceUrl:
-      gcp: http://localhost:8761/eureka/
       aws: http://localhost:8762/eureka/
+      gcp: http://localhost:8761/eureka/
   server:
     wait-time-in-ms-when-sync-empty: 0
     enable-self-preservation: false 
