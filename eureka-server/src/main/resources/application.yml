@@ -13,12 +13,22 @@ eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
-    preferSameZoneEureka: true
-    availabilityZones:
-      default: gcp,aws
     serviceUrl:
-      gcp: http://localhost:8761/eureka/
-      aws: http://localhost:8762/eureka/
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+    # 跨云部署配置
+    eureka-server-connect-timeout-seconds: 10
+    eureka-server-read-timeout-seconds: 10
+    eureka-server-total-connections: 1000
+    eureka-server-total-connections-per-host: 500
+    registry-fetch-interval-seconds: 30
+    initial-instance-info-replication-interval-seconds: 40
   server:
     wait-time-in-ms-when-sync-empty: 0
-    enable-self-preservation: false 
+    enable-self-preservation: false
+    # 跨云部署配置
+    peer-node-connect-timeout-ms: 10000
+    peer-node-read-timeout-ms: 10000
+    peer-node-total-connections: 1000
+    peer-node-total-connections-per-host: 500
+    peer-eureka-nodes-update-interval-ms: 30000
+    peer-eureka-status-refresh-time-interval-ms: 30000 
