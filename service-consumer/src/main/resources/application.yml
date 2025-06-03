@@ -1,22 +1,25 @@
 spring:
   application:
     name: service-consumer
-  # 配置区域感知增加的配置
-  cloud:
-    loadbalancer:
-      zone: aws
-      configurations: zone-preference
-      
+
 server:
   port: 8002
         
 eureka:
   client:
     service-url:
-#      defaultZone: http://localhost:8761/eureka/
-      defaultZone: https://eureka.bitmartgcp-test.com/eureka/
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+  instance:
+    metadata-map:
+      zone: gcp
+    zone: gcp
 
-# 简单的Feign配置
+# Ribbon配置
+service-provider:  # 服务提供者的应用名
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule  # 使用区域感知策略
+
+# Feign配置
 feign:
   client:
     config:
