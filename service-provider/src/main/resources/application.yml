@@ -9,7 +9,7 @@ eureka:
   client:
     service-url:
 #      defaultZone: http://localhost:8761/eureka/
-      defaultZone: https://eureka.bitmartgcp-test.com/eureka/
+      defaultZone: https://eureka.bminfraaws-test.com/eureka/
   # 配置区域感知增加的配置
   instance:
     metadata-map:
