@@ -42,7 +42,7 @@ fi
 
 # 启动服务
 java -javaagent:${SKYWALKING_AGENT_PATH}/skywalking-agent.jar \
-     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 \
+     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006 \
      -Dskywalking.agent.service_name=service-consumer \
      -Dskywalking.collector.backend_service=127.0.0.1:11800 \
      -Deureka.graceful.startup.enabled=true \
