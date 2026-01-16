@@ -41,8 +41,15 @@ if [ ! -f "target/service-provider-0.0.1-SNAPSHOT.jar" ]; then
 fi
 
 # 启动服务
+# 支持通过环境变量禁用 JDWP
+JDWP_OPTS=""
+if [ "${DISABLE_JDWP}" != "true" ]; then
+    JDWP_PORT=${JDWP_PORT:-5005}
+    JDWP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:${JDWP_PORT}"
+fi
+
 java -javaagent:${SKYWALKING_AGENT_PATH}/skywalking-agent.jar \
-     -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 \
+     ${JDWP_OPTS} \
      -Dskywalking.agent.service_name=service-provider \
      -Dskywalking.collector.backend_service=127.0.0.1:11800 \
      -Deureka.graceful.startup.enabled=true \

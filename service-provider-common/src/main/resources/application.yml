@@ -8,8 +8,8 @@ server:
 eureka:
   client:
     service-url:
-#      defaultZone: http://localhost:8761/eureka/
-      defaultZone: https://eureka.bminfraaws-test.com/eureka/
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: https://eureka.bminfraaws-test.com/eureka/
 
 # 日志配置
 logging:
