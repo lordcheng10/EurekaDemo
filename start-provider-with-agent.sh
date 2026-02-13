@@ -30,6 +30,13 @@ export SW_AGENT_COLLECTOR_BACKEND_SERVICES=127.0.0.1:11800
 export SW_OPEN_GRAY=false
 
 # ===================================
+# SkyWalking 优雅关闭配置
+# ===================================
+# 解决 Kafka Producer 过早关闭的问题
+export SW_AGENT_SHUTDOWN_WAIT_TIME=30           # Agent 关闭等待时间（秒）
+export SW_KAFKA_FLUSH_TIMEOUT=5000              # Kafka 刷新超时时间（毫秒）
+
+# ===================================
 # 路径配置
 # ===================================
 SKYWALKING_AGENT_PATH="/Users/bitmart/work/codes/company/skywalking-java-agent/skywalking-agent"
@@ -75,4 +82,6 @@ java -javaagent:${SKYWALKING_AGENT_PATH}/skywalking-agent.jar \
      -Dskywalking.agent.service_name=service-provider \
      -Dskywalking.collector.backend_service=127.0.0.1:11800 \
      -Dskywalking.logging.level=INFO \
+     -Dskywalking.agent.shutdown_wait_time=30 \
+     -Dskywalking.plugin.kafka.flush_timeout=5000 \
      -jar target/service-provider-0.0.1-SNAPSHOT.jar

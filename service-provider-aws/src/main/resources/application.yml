@@ -20,4 +20,5 @@ eureka:
 logging:
   level:
     com.netflix.discovery: INFO
-    org.springframework.cloud.netflix.eureka: INFO 
+    org.springframework.cloud.netflix.eureka: INFO
+    ACCESS_LOG: INFO 

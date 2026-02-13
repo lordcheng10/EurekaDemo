@@ -13,7 +13,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka
 #      defaultZone: https://eureka.bminfraaws-test.com/eureka/
 
   # 配置区域感知增加的配置
@@ -33,4 +33,5 @@ logging:
   level:
     com.netflix.loadbalancer: DEBUG
     org.springframework.cloud.netflix.ribbon: DEBUG
-    org.springframework.cloud.netflix.eureka: DEBUG 
+    org.springframework.cloud.netflix.eureka: DEBUG
+    ACCESS_LOG: INFO 
