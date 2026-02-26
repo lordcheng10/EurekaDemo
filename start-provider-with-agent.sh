@@ -11,7 +11,7 @@ export ONEAGENT_ENABLE=true
 export ONEAGENT_ETCD_ENDPOINTS=http://localhost:2379
 
 # 3. 可选配置（以下为推荐值，可根据实际情况调整）
-export ONEAGENT_ETCD_SERVICE_PREFIX=/services
+export ONEAGENT_ETCD_SERVICE_PREFIX=/oneagent
 export ONEAGENT_WARMUP_TIME_MS=3000                    # 流量预热时间（开发环境：3秒）
 export ONEAGENT_INITIAL_WEIGHT=1000                    # 初始权重
 export ONEAGENT_DRAIN_WAIT_TIME_MS=10000               # 下线时等待时间（开发环境：10秒）
